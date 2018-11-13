@@ -50,8 +50,7 @@ def parse():
     context['steps_count'] = stats['steps_count']
     context['error_count'] = stats['error_count']
     context['overall_variable_count'] = stats['overall_variable_count']
-    with open('log.json', 'w') as fd:
-        fd.write(json.dumps(context, sort_keys=True, indent=4))
+    
     return render_template('report.html', context=context) 
 
 
