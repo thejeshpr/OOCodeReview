@@ -63,11 +63,17 @@ class ProjectParser():
         Create Threads to Parse the flows and merge the results
         Returns: list of FlowParser.json
         """
-        pool = ThreadPool(5)
-        results = pool.map(self.parse_flows, self.flows)
-        pool.close()
-        pool.join()
+        # pool = ThreadPool(5)
+        # results = pool.map(self.parse_flows, self.flows)
+        # pool.close()
+        # pool.join()
+        
+        results = []
+        for flow in self.flows:
+            results.append(self.parse_flows(flow))
+
         self.parse_config_items()
+        
         return results    
 
     def parse_config_items(self):

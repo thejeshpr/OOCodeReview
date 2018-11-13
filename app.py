@@ -36,8 +36,8 @@ def parse():
 
     context = {}
     context['violations'] = VIOLATION_MATRIX
-    # context['title'] = proj_parser.project_name + proj_parser.file_size
-    context['title'] = proj_parser.file_size
+    context['title'] = proj_parser.project_name
+    #context['title'] = proj_parser.file_size
     context['flows_count'] = len(json_result)
     context['flows'] = json_result
     context['sys_props'] = proj_parser.sys_props_list
@@ -65,6 +65,6 @@ def config():
 
 
 if __name__ == "__main__":
-    APP.run(debug=True)
-    APP.run(host='0.0.0.0', port=8080)
-    # APP.run(host='0.0.0.0', port=80)
+    #APP.run(debug=True)
+    #APP.run(host='0.0.0.0', port=8080)
+    APP.run(host='0.0.0.0', port=80)
