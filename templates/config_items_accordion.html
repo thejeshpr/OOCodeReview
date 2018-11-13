@@ -1,0 +1,38 @@
+<!-- Begin Config Items -->
+<div id="accordionConfigItems">
+  <div class="card">
+
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#system-properties" aria-expanded="false" aria-controls="collapseOne">
+            System Properties - ({{ context.sys_props | length }})
+          </button>
+      </h5>
+    </div>
+
+    <div id="system-properties" class="collapse" aria-labelledby="headingOne" data-parent="#accordionConfigItems">
+      <div class="card-body">
+        {% include 'system_properties.html' %}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#system-accounts" aria-expanded="false" aria-controls="collapseOne">
+            System Accounts - ({{ context.sys_accts | length }})
+          </button>   
+      </h5>
+    </div>
+
+    <div id="system-accounts" class="collapse" aria-labelledby="headingOne" data-parent="#accordionConfigItems">
+      <div class="card-body">
+        {% include 'system_accounts.html' %}
+      </div>
+    </div>
+  </div>
+
+  </div>
+<!-- End Config Items -->

@@ -1,0 +1,152 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="../../../../favicon.ico">-->
+
+    <title>Code Review Automation</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./static/css/sticky-footer-navbar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./static/css/fa.css">
+  </head>
+
+  <body style="background-color: #F3F3F3;">
+
+    <header>
+      {% include 'navbar.html' %}
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container mt-2">
+      <!--<h1 class="mt-5">OO Project Parser</h1>-->
+      
+      <!-- form start -->
+      <form method="POST" action="/parse" enctype="multipart/form-data">
+        
+        <!--<div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>        -->
+        <div class="card">
+          <div class="card-body">
+
+            <h5 class="card-title">Upload OO Project file</h5>
+            <div class="form-group form-check mt-3">          
+              <input type="file" class="custom-file-input" id="validatedCustomFile" name="project_file" required>
+              <label class="custom-file-label" for="validatedCustomFile">Upload Content Pack...</label>              
+              <div class="invalid-feedback">Example invalid custom file feedback</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card mt-2">
+          <div class="card-body">
+
+          <!--<h5 class="card-title">Upload OO Project file</h5>
+            <div class="form-group form-check mt-3">          
+              <input type="file" class="custom-file-input" id="validatedCustomFile" name="project_file" required>
+              <label class="custom-file-label" for="validatedCustomFile">Upload Content Pack...</label>              
+              <div class="invalid-feedback">Example invalid custom file feedback</div>
+            </div>-->
+
+
+
+          <h5 class="card-title">Configuration</h5>
+
+          <!--<div class="form-group">
+            <label for="steps_to_ignore">Steps to Ignore (sperated by new lines):</label>
+            <textarea class="form-control" id="steps_to_ignore" rows="3" name="steps_to_ignore"></textarea>
+            <small id="steps_to_ignore_help" class="form-text text-muted">List of steps UUID's to skip validation</small>
+          </div>
+
+          <div class="form-group">
+            <label for="vars_to_ignore">Variables to Ignore (sperated by new lines):</label>
+            <textarea class="form-control" id="vars_to_ignore" rows="3" name="vars_to_ignore"></textarea>
+            <small id="steps_to_ignore_help" class="form-text text-muted">List of variable names to skip validation</small>
+          </div>-->
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="vars_to_ignore">Variables to Ignore:</label>
+                <textarea class="form-control" id="vars_to_ignore" rows="3" name="vars_to_ignore"></textarea>
+                <small id="steps_to_ignore_help" class="form-text text-muted">List of variable names to skip validation, sperated by new lines</small>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="steps_to_ignore">Steps to Ignore:</label>
+                <textarea class="form-control" id="steps_to_ignore" rows="3" name="steps_to_ignore">{{ context.default_steps_to_ignore }}</textarea>
+                <small id="steps_to_ignore_help" class="form-text text-muted">List of steps UUID's to skip validation, sperated by new lines</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="only_errors" name="only_errors">
+            <label class="form-check-label" for="only_errors">Only Errors</label>
+            <small id="steps_to_ignore_help" class="form-text text-muted">Include only error steps in the report</small>
+          </div>
+
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="ignore_flow_output_vars_in_steps" name="ignore_flow_output_vars_in_steps">
+            <label class="form-check-label" for="ignore_flow_output_vars_in_steps">Ignore Flow Output Variables in Steps</label>
+            <small id="steps_to_ignore_help" class="form-text text-muted">Skip flow output variables validation in steps</small>
+          </div>
+
+        </div>
+        <div class="card-footer">
+          <div>
+            <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+            <button type="reset" class="btn btn-lg btn-secondary">Reset</button>
+          </div>
+        </div>
+      </div>
+
+        
+
+        
+        
+
+        <!--<div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="ignore_scriptlets_in_filters" name="ignore_scriptlets_in_filters">
+          <label class="form-check-label" for="ignore_scriptlets_in_filters">Ignore Scriptlet In Filters</label>          
+        </div>-->
+
+        
+
+        
+      </form>
+      <!-- form end -->
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted"><!-- Place sticky footer content here. --></span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./static/js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="./static/js/popper.min.js"></script>
+    <script src="./static/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<div id="sys-accts-accordion">
+
+  {% for sys_acct in context.sys_accts %}
+    <div class="card">
+
+      <div class="card-header" id="heading_{{ loop.index }}">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#{{ sys_acct.uuid }}" aria-controls="collapseOne">
+            {{ loop.index }}. {{ sys_acct.name }}
+          </button>
+        </h5>
+      </div>
+
+      <div id="{{ sys_acct.uuid }}" class="collapse" aria-labelledby="heading_{{ loop.index }}" data-parent="#sys-accts-accordion">
+        <div class="card-body">
+          <!-- table start -->
+          <table class="table table-bordered">
+            <tr>
+              <th class="table-dark"><strong>Name</strong> </th>
+              <td>{{ sys_acct.name }}</td>
+            </tr>
+              <!-- <tr>
+                <th class="table-dark"><strong>Description</strong> </th>
+                {% if sys_acct.desc == ''%}
+                  <td style="background-color: #ffb3b3"></td>
+                {% else %}
+                  <td>{{ sys_acct.desc }}</td>
+                {% endif %}
+              </tr> -->
+              <tr>
+                <th class="table-dark"><strong>Path</strong> </th>
+                <td>{{ sys_acct.path }}</td>
+              </tr>
+              
+          </table>
+          <!-- table end -->
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  
+</div>

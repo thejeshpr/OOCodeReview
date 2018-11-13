@@ -1,0 +1,192 @@
+<!-- Begin Flows -->
+<div id="accordionFlows">
+    {% for flow in context.flows %}
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#{{ flow.uuid }}" aria-expanded="false" aria-controls="collapseOne">                   
+                  {{ loop.index }} . {{ flow.name }} 
+                  {% if flow.scriptlet == True %} - <span class="badge badge-primary">JS</span>{% endif %} 
+                  {% if flow.has_violations == True %} - <small style="color: red;"> <i class="fas fa-exclamation-triangle"></i> issues found</small> {% endif %}                  
+                </button>
+            </h5>
+        </div>
+
+        <div id="{{ flow.uuid }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionFlows">
+            <div class="card-body">
+              <!-- Table Begins-->
+
+              <table class="table table-bordered">                           
+                <thead class="thead-dark">
+                   <tr align="center">
+                      <th class="w-20">Step</th>
+                      <th>Variable Type</th>
+                      <th>Name</th>
+                      <th>Assign From</th>
+                      <th>Default Value</th>
+                      <th>Remarks</th>
+                   </tr>
+                </thead>
+                <tbody>
+
+                  <!-- Flow Inputs Start -->
+                  {% if flow['inputs'] | length > 0 %}
+                    <tr>
+                        <th class="table-secondary" rowspan={{ flow['inputs'] | length + 1 }}">Flow Inputs</th>
+                    </tr>
+                    {% for input in flow['inputs'] %}
+                      <tr class="{% if input['violations'] %}table-danger{% endif %}">
+                        <td>Input Variable</td>
+                        <td>{{ input['name'] }}</td>                      
+                        
+                        <!-- Assign From -->
+                        {% if input.assign_from | length > 20 %}
+                          <td>
+                            {{ input['assign_from']| e |truncate(20, true,'...')}}
+                            <a tabindex="0" class="" role="button" data-toggle="popover" data-trigger="focus" title="Assign From Value of variable '{{ input.name }}'" data-content='{{ input.assign_from | e }}'>view more</a>
+                          </td>
+                        {% else %}
+                          <td>{{ input['assign_from'] | e }}</td>
+                        {% endif %}
+                        <!-- Assign From end-->
+
+                        <!-- Default value -->
+                        {% if input.default_value | length > 20 %}
+                          <td>
+                            {{ input['default_value']| e |truncate(20, true,'...')}}
+                            <a tabindex="0" class="" role="button" data-toggle="popover" data-trigger="focus" title="Default Value of variable '{{ input.name }}'" data-content='{{ input.default_value | e }}'>view more</a>
+                          </td>
+                        {% else %}
+                          <td>{{ input['default_value'] | e }}</td>
+                        {% endif %}
+                        <!-- Default value -->
+
+                        <td>
+                          {% for key in input['violations'] %}
+                            <li>{{ context.violations[key] }}</li>
+                          {% endfor %}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% else %}
+                    <tr>
+                      <th class="table-secondary">Flow Inputs</th>
+                      <td colspan="5" align="center">No Inputs</td>
+                    </tr>
+                  {% endif %}
+                  <!-- Flow Inputs End-->
+
+                  <!-- Flow Outputs Start -->
+                  {% if flow['outputs'] | length > 0 %}
+                    <tr>
+                        <th class="table-secondary" rowspan={{ flow['outputs'] | length + 1 }}">Flow Outputs</th>
+                    </tr>
+                    {% for output in flow['outputs'] %}
+                      <tr class="{% if output['violations'] %}table-danger{% endif %}">
+                        <td>Output Variable</td>
+                        <td>{{ output['name'] }}</td>
+                        <td>{{ output['assign_from'] }}</td>
+                        <td></td>
+                        <td>
+                          {% for key in output['violations'] %}
+                            <li>{{ context.violations[key] }}</li>
+                          {% endfor %}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% else %}
+                    <tr>
+                      <th class="table-secondary">Flow Outputs</th>
+                      <td colspan="5" align="center">No Outputs</td>
+                    </tr>
+                  {% endif %}
+                  <!-- Flow Outputs End-->
+
+                  <!-- step start -->
+                  {% for step in flow['steps'] %}
+                    {% if step['actual_var_count'] > 0 %}
+                      <tr>
+                        <th class="table-secondary" rowspan="{{ step['actual_var_count'] + 1}}">
+                          {{ step['name'] }}
+                          {% include 'js_modal.html' %}
+                        </th>
+                      </tr>
+
+                      <!-- Step Inputs Start -->
+                      {% for input in step['inputs'] %}
+                        <tr class="{% if input['violations'] %}table-danger{% endif %}">
+                          <td>Input Variable</td>
+                          <td>{{ input['name'] }}</td>
+                          
+                          <!-- Assign From -->
+                          {% if input.assign_from | length > 20 %}
+                            <td>
+                              {{ input['assign_from']| e |truncate(20, true,'...')}}
+                              <a tabindex="0" class="" role="button" data-toggle="popover" data-trigger="focus" title="Assign From Value of variable '{{ input.name }}'" data-content='{{ input.assign_from | e }}'>view more</a>
+                            </td>
+                          {% else %}
+                            <td>{{ input['assign_from'] | e }}</td>
+                          {% endif %}
+                          <!-- Assign From end-->
+
+                          <!-- Default Value-->
+                          {% if input.default_value | length > 20 %}
+                            <td>
+                              {{ input['default_value']| e |truncate(20, true,'...')}}
+                              <a tabindex="0" class="" role="button" data-toggle="popover" data-trigger="focus" title="Default Value of variable '{{ input.name }}'" data-content='{{ input.default_value | e }}'>view more</a>
+                            </td>
+                          {% else %}
+                            <td>{{ input['default_value'] | e }}</td>
+                          {% endif %}
+                          <!-- Default Value-->
+
+                          <td>
+                            {% for key in input['violations'] %}
+                              <li>{{ context.violations[key] }}</li>
+                            {% endfor %}
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      <!-- Step Inputs End -->
+
+                      <!-- Step Ouput Starts-->
+                      {% for output in step['outputs'] %}
+                        <tr class="{% if output['violations'] %}table-danger{% endif %}">
+                          <td>
+                            {% if output.variable_type == "FLOW_OUTPUT_FIELD" %} 
+                              Flow Output Variable
+                            {% else %} 
+                              Output Variable
+                            {% endif %}
+                          </td>
+                          <td>{{ output.name }}</td>
+                          <td>{{ output.assign_from }}</td>
+                          <td></td>
+                          <td>
+                            {% for key in output['violations'] %}
+                              <li>{{ context.violations[key] }}</li>
+                            {% endfor %}
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      <!--Step Ouput Ends-->
+
+                    {% else %}
+                      <tr>
+                        <th class="table-secondary">{{ step.name }}</th>
+                        <td colspan="5" align="center"> No inputs and outputs</td>
+                      </tr>
+                    {% endif %}                 
+                  {% endfor %}
+                  <!-- step end-->
+                </tbody>
+              </table>
+              <!-- Table End -->
+
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!-- End Flows -->

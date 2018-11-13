@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title> {{ title }} </title>      
+      <!-- Load Modules from Internet !-->
+      <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+      <link href="../static/css/fa.css" rel="stylesheet">
+      <link href="../static/css/highlight.css" rel="stylesheet" >
+      <link href="../static/fonts/font-KoHo.css" rel="stylesheet">            
+      
+      <style type="text/css">
+        .custom-counter{
+          font-family: 'KoHo', sans-serif;
+        }
+      </style>
+   </head>
+   <body>
+    <header>
+      {% include 'navbar.html' %}
+    </header>
+
+    <section class="jumbotron text-center mb-0 p-5 mt-4" style="background-color: white">
+        <div class="container">
+          <h1 class="jumbotron-heading">{{ context.title }}</h1>          
+          <p class="lead text-muted">Total {{ context.flows_count }} flow(s) processed</p>          
+          <!-- Here add the mulitple tabs -->
+          
+          <!-- end -->
+        </div>
+
+        <hr>
+
+      </section>      
+
+      <div class="container">
+        <section>
+         <div class="row">        
+            <div class="col-md-3">
+              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">            
+                <div class="card-body" align="center">
+                  <h2 class="card-title custom-counter">{{ context.flows_count }}</h2>
+                  <p class="card-text">Flows Processed</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card text-white bg-success mb-3" style="max-width: 18rem;">            
+                <div class="card-body" align="center">
+                  <h2 class="card-title custom-counter">{{ context.sys_props | length }}</h2>
+                  <p class="card-text">System Properties</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">            
+                <div class="card-body" align="center">
+                  <h2 class="card-title custom-counter">{{ context.sys_accts | length }}</h2>
+                  <p class="card-text">System Accounts</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">            
+                <div class="card-body" align="center">
+                  <h2 class="card-title custom-counter">{{ context.error_count }}</h2>
+                  <p class="card-text">Issues Found</p>
+                </div>
+              </div>
+            </div>
+         </div>                
+        </section>
+      </div>
+
+      <hr>
+
+    <!--<section class="jumbotron text-center">
+      <div class="container">
+        
+      </div>
+    </section>-->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <!--<section><h2>Flows</h2></section>-->
+
+          <div class="accordion" id="accordionMain">
+
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFlows" aria-expanded="false" aria-controls="collapseOne">
+                    Flows - ({{ context.flows_count }})
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseFlows" class="collapse" aria-labelledby="headingOne" data-parent="#accordionMain">
+                <div class="card-body">
+                  {% include 'flow_accordion.html' %}
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseConfigItems" aria-expanded="false" aria-controls="collapseConfigItems">
+                    Configuration Items - (2)
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseConfigItems" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionMain">
+                <div class="card-body">
+                  
+                  {% include 'config_items_accordion.html' %}
+
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+   </body>
+   <script src="../static/js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+   <script src="../static/js/popper.min.js"></script>
+   <script src="../static/js/bootstrap.min.js"></script>
+   <script src="../static/js/highlight.min.js"></script>
+   <script>hljs.initHighlightingOnLoad();</script>
+   <script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="popover"]').popover()
+    })
+
+   </script>
+</html>

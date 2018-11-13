@@ -1,0 +1,51 @@
+<div id="sys-props-accordion">
+
+  {% for sys_prop in context.sys_props %}
+    <div class="card">
+
+      <div class="card-header" id="heading_{{ loop.index }}">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#{{ sys_prop.uuid }}" aria-controls="collapseOne">
+            {{ loop.index }}. {{ sys_prop.name }}
+          </button>
+        </h5>
+      </div>
+
+      <div id="{{ sys_prop.uuid }}" class="collapse" aria-labelledby="heading_{{ loop.index }}" data-parent="#sys-props-accordion">
+        <div class="card-body">
+          <!-- table start -->
+          <table class="table table-bordered">
+            <tr>
+              <th class="table-dark"><strong>Name</strong> </th>
+              <td>{{ sys_prop.name }}</td>
+            </tr>
+              <!-- <tr>
+                <th class="table-dark"><strong>Description</strong> </th>
+                {% if sys_prop.desc == ''%}
+                  <td style="background-color: #ffb3b3"></td>
+                {% else %}
+                  <td>{{ sys_prop.desc }}</td>
+                {% endif %}
+              </tr> -->
+              <tr>
+                <th class="table-dark"><strong>Path</strong> </th>
+                <td>{{ sys_prop.path }}</td>
+              </tr>
+              <tr>
+                <th class="table-dark" rowspan="{{ sys_prop.usage | length + 1}}">Where it is used</th>
+                {% for used_flow in sys_prop.usage %}
+                   
+                     <tr>
+                     <td>{{used_flow}}</td>
+                     </tr>
+                    
+                {% endfor %}
+              </tr>
+          </table>
+          <!-- table end -->
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  
+</div>

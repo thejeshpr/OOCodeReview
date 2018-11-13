@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title> {{ title }} </title>      
+      <!-- Load Modules from Internet !-->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+      <!-- Or else load it from local -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">      
+      <link rel="stylesheet" href="css/fa.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+      <script src="js/popper.min.js"></script>
+      <script src="js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="js/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <script src="js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <link href="https://fonts.googleapis.com/css?family=KoHo" rel="stylesheet">
+      <style type="text/css">
+        .custom-counter{
+          font-family: 'KoHo', sans-serif;
+        }
+      </style>
+   </head>
+   <body>
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">This is basically gives the information about the OO Flow in the OO project.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Authors</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Thejesh P R (tp-r@microfocus.com)</a></li>
+                <li><a href="#" class="text-white">U B Sujit (sujit.u.bhat@microfocus.com)</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>Operation Orchestration</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="jumbotron text-center mb-0 p-5" style="background-color: white">
+        <div class="container">
+          <h1 class="jumbotron-heading">{{ title }}</h1>          
+          <p class="lead text-muted">Total {{ flows_count }} flow(s) processed</p>
+          <!--<a href="{{ project_object.project_name }}_ConfirgurationItems.html">Click Here For System Configuration Info</a>-->
+          <!-- Here add the mulitple tabs -->
+          
+          <!-- end -->
+        </div>
+
+        <hr>
+
+      </section>      
+
+      <div class="container">
+        <section>
+         <div class="row">        
+            <div class="col-md-3">
+              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">            
+                <div class="card-body" align="center">
+                  <h2 class="card-title custom-counter">{{ flows_count }}</h2>
+                  <p class="card-text">Flows Processed</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card text-white bg-success mb-3" style="max-width: 18rem;">            
+                <div class="card-body" align="center">
+                  <h2 class="card-title custom-counter">{{ steps_count }}</h2>
+                  <p class="card-text">Steps processed</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">            
+                <div class="card-body" align="center">
+                  <h2 class="card-title custom-counter">{{ unique_variables_count }}</h2>
+                  <p class="card-text">Variables Processed</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">            
+                <div class="card-body" align="center">
+                  <h2 class="card-title custom-counter">{{ error_count }}</h2>
+                  <p class="card-text">Errors Found</p>
+                </div>
+              </div>
+            </div>
+         </div>                
+        </section>
+      </div>
+
+    <!--<section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">{{ project_object.project_name }}</h1>
+        <p class="lead text-muted">Total {{ project_object.flows|length }} flow(s) processed</p>        
+      </div>
+    </section>-->
+      <div class="container-fluid bg-light">
+
+         <div class="row">
+            <div class="col-md-12">
+              <!--<h2>Flows report of project <strong>{{ project_object.project_name }}</strong> <small>({{ project_object.flows|length }} flow(s) found)</small></h2>-->
+              <!--<hr>-->
+
+              <div class="row">
+                <div class="col-md-4 col-sm-12">
+                  <legend>Color Code Definitions</legend>              
+                  <table class="table table-bordered">                    
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Description</th>
+                        <th>Color Code</th>
+                      </tr>
+                    </thead>
+                    <tr>
+                      <th>Variable Mismatch</th>
+                      <td >
+                        <div class="p-1 table-danger">
+                          {% for i in range(10) %}
+                            &nbsp;
+                          {% endfor %}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Hard Coded values</th>
+                      <td>
+                        <div class="table-warning p-1">
+                          {% for i in range(10) %}
+                            &nbsp;
+                          {% endfor %}
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              
+              <legend>Flows</legend>
+              <hr>
+              <div id="accordion">
+                  {% for flow in project_object.flows %}
+                  <div class="card">
+                     <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                           <button class="btn btn-link" data-toggle="collapse" data-target="#{{ flow.uuid }}" aria-expanded="true" aria-controls="collapseOne">
+                           {{ loop.index }} . {{ flow.name }} - {{flow.has_violations}} {% if flow.has_violations == True %} <small style="color: red;"> <i class="fas fa-exclamation-triangle"></i> issues found</small> {% endif %}
+                           </button>
+                        </h5>
+                     </div>                     
+                     <div id="{{ flow.uuid }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                           <p><strong>Path : </strong><small><i>{{ flow.flow_path }}</i></small></p>
+                           <p><strong>UUID : </strong><small><i>{{ flow.uuid }}</i></small></p>
+
+                           
+
+                           <table class="table table-bordered">                           
+                              <thead class="thead-dark">
+                                 <tr align="center">
+                                    <th>Step</th>
+                                    <th>Variable Type</th>
+                                    <th>Name</th>
+                                    <th >Assign From</th>
+                                    <th>Default Value</th>
+                                    <th>Remarks</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+
+                                <!-- Flow Inputs Section -->
+                                {% if flow.inputs | length > 0 %}
+                                  <tr>
+                                    <th class="table-secondary" rowspan={{ flow.inputs | length + 1 }}">Flow Inputs</th>
+                                  </tr>
+                                  {% for input in flow.inputs %}
+                                    <tr>                                  
+                                      <td>Flow Input Variable</td>
+                                      {% if input.name != input.assign_from %}
+                                        <td class="table-danger">{{ input.name }}</td>
+                                        <td class="table-danger">{{ input.assign_from |truncate(truncate_length, true,'...(TRUNCATED)') }}</td>
+                                      {% else %}
+                                        <td>{{ input.name }}</td>
+                                        <td>{{ input.assign_from |truncate(truncate_length, true,'...(TRUNCATED)') }}</td>
+                                      {% endif %}
+                                      {% if input.default_value != "" %}
+                                        {% if input.default_value | length > truncate_length %}
+                                          <td class="table-warning">{{ input.default_value |e|truncate(truncate_length, true, '...') }}                                            
+                                            <a tabindex="0" class="" role="button" data-toggle="popover" data-trigger="focus" title="Default Value of variable {{ input.name }}" data-content="{{ input.default_value | e }}">view more</a>
+                                          </td>
+                                        {% else %}
+                                          <td class="table-warning">{{ input.default_value|e }}</td>
+                                        {% endif %}
+                                        }
+                                      {% else %}
+                                        <td>{{ input.default_value }}</td>
+                                      {% endif %}
+                                      <td>
+                                        {% for key in input.violations %}
+                                          <li>{{ violations[key] }}</li>
+                                        {% endfor %}
+                                      </td>
+                                    </tr>
+                                    {% endfor %}
+                                  {% else %}
+                                     <tr>
+                                      <th class="table-secondary">Flow Inputs</th>
+                                      <td colspan="5" align="center">No Inputs</td>
+                                    </tr>
+                                  {% endif %}
+                                  <!-- Flow Inputs section end  -->
+
+                                  <!-- Flow Ouputs Section -->                                
+                                {% if flow.outputs | length > 0 %}
+                                  <tr>
+                                    <th class="table-secondary" rowspan={{ flow.outputs | length + 1 }}">Flow Outputs</th>
+                                  </tr>
+                                  {% for output in flow.outputs %}
+                                    <tr>                                  
+                                      <td>Flow Output Variable</td>
+                                      <td>{{ output.name }}</td>
+                                      <td>{{ output.assign_from }}</td>
+                                      <td></td>
+                                      <td>
+                                        {% for key in output.violations %}
+                                          <li>{{ violations[key] }}</li>
+                                        {% endfor %}
+                                      </td>
+                                    </tr>
+                                    {% endfor %}
+                                  {% else %}
+                                     <tr>
+                                      <th class="table-secondary">Flow Outputs</th>
+                                      <td colspan="5" align="center">No Outputs</td>
+                                    </tr>
+                                  {% endif %}
+                                  <!-- Flow Ouputs Section End -->
+
+
+                                  {% for step in flow.steps %}
+                                    {% if step.no_of_inputs + step.no_of_outputs > 0 %}
+                                      <tr>                                      
+                                        <th class="table-secondary" rowspan="{{ step.no_of_inputs + step.no_of_outputs + 1}}"> {{ step.name }} 
+                                          {% if step.scriptlet != None %}
+                                            <p style="color:red;"><strong>(JS found)</strong>
+                                              <a href="#" data-toggle="modal" data-target="#{{ step.uuid }}-Modal"> View Code</a>
+                                            </p>
+
+                                            <!-- Modal -->
+                                                  <div class="modal fade" id="{{ step.uuid }}-Modal" tabindex="-1" role="dialog" aria-labelledby="{{ step.uuid }}ModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="{{ step.uuid }}ModalLabel">JavaScript used in step {{ step.name }}</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                          
+                                                            <pre class="text-left">
+                                                              <code>
+                                                            {{ step.scriptlet }}
+                                                              </code>
+                                                            </pre>
+                                                          
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                                                          
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+
+                                            {% for key in step.violations %}
+                                                <li style="color:red;">{{ violations[key] }}</li>
+                                            {% endfor %}
+                                          {% endif %}
+                                        </th>
+                                      </tr>
+                                        {% for input in step.inputs %}
+                                          <tr>
+                                            <td>Input Variable</td>                                            
+                                            
+                                            {% if input.name != input.assign_from %}
+                                              <td class="table-danger">{{ input.name }}</td>
+                                              <td class="table-danger">{{ input.assign_from | truncate(truncate_length, true,'...(TRUNCATED)')}}</td>
+                                            {% else %}
+                                              <td>{{ input.name }}</td>
+                                              <td>{{ input.assign_from |truncate(truncate_length, true,'...(TRUNCATED)') }}</td>
+                                            {% endif %}
+
+                                            {% if input.default_value == "" %}
+                                              <td>{{ input.default_value }}</td>
+                                            {% else %}
+                                              {% if input.default_value | length > truncate_length %}
+                                                <td class="table-warning">{{ input.default_value| e |truncate(truncate_length, true,'...') }}
+                                                  <a tabindex="0" class="" role="button" data-toggle="popover" data-trigger="focus" title="Default Value of variable {{ input.name }}" data-content="{{ input.default_value | e }}">view more</a>
+                                                </td>
+                                              {% else %}
+                                                <td class="table-warning">{{ input.default_value | e }}</td>
+                                              {% endif %}                                              
+                                            {% endif %}
+                                            <td>
+                                              {% for key in input.violations %}
+                                                <li>{{ violations[key] }}</li>
+                                              {% endfor %}
+                                            </td>
+                                          </tr>
+                                        {% endfor %}
+                                        {% for output in step.outputs %}
+                                          <tr>
+                                            <td>
+                                              {% if output.variable_type == "FLOW_OUTPUT_FIELD" %} Flow Output Variable
+                                              {% else %} Output Variable
+                                              {% endif %}
+                                            </td>
+                                            <td>{{ output.name }}</td>
+                                            <td>{{ output.assign_from }}</td>
+                                            <td></td>
+                                            <td>
+                                              {% for key in output.violations %}
+                                                <li>{{ violations[key] }}</li>
+                                              {% endfor %}
+                                            </td>
+                                          </tr>
+                                        {% endfor %}
+                                      </tr>
+                                    {% else %}
+                                      <tr>
+                                        <th class="table-secondary">{{ step.name }}</th>
+                                        <td colspan="5" align="center"> No inputs and outputs</td>
+                                      </tr>
+                                    {% endif %}
+                                  {% endfor %}
+                              </tbody>
+                            </table>
+
+                        </div>                        
+                     </div>
+                  </div>                  
+                  {% endfor %}
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </body>
+   <script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="popover"]').popover()
+    })
+
+   </script>
+</html>
