@@ -1,5 +1,6 @@
 import zipfile
 from pprint import pprint
+import json
 
 from flask import Flask, render_template, jsonify, request
 
@@ -49,7 +50,8 @@ def parse():
     context['steps_count'] = stats['steps_count']
     context['error_count'] = stats['error_count']
     context['overall_variable_count'] = stats['overall_variable_count']
-
+    with open('log.json', 'w') as fd:
+        fd.write(json.dumps(context, sort_keys=True, indent=4))
     return render_template('report.html', context=context) 
 
 
@@ -65,6 +67,6 @@ def config():
 
 
 if __name__ == "__main__":
-    #APP.run(debug=True)
-    #APP.run(host='0.0.0.0', port=8080)
-    APP.run(host='0.0.0.0', port=80)
+    APP.run(debug=True)
+    APP.run(host='0.0.0.0', port=8080)
+    #APP.run(host='0.0.0.0', port=80)
