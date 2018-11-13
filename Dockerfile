@@ -18,4 +18,4 @@ EXPOSE 80
 
 # Run app.py when the container launches
 #CMD ["python", "app.py"]
-CMD ["gunicorn", "--workers=2", "--bind=0.0.0.0:80", "app:app"]
+CMD ["gunicorn", "--workers=2", "--bind=0.0.0.0:80", "app:APP"]
