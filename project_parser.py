@@ -31,6 +31,7 @@ class ProjectParser():
         self.flows = []
         self.sys_props = []
         self.sys_accts = []
+        self.file_size = self.zf_ref.infolist() 
         for file_ref in self.zf_ref.infolist():
             if file_ref.filename.endswith('.xml'):
                 if file_ref.filename.startswith('Content/Library/'):
